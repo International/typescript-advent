@@ -9,7 +9,9 @@ describe('level_calculation', () => {
 
   it('(()) and ()() should be 0', () => {
     var detected_1:number = detect_level('(())');
-    console.log("detected:" + detected_1);
     detected_1.should.equal(0);
+
+    var detected_2:number = detect_level('()()');
+    detected_2.should.equal(0);
   });
 });
