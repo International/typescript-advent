@@ -8,5 +8,8 @@
     "test": "mocha spec"
   },
   "author": "George Opritescu",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "should": "^7.1.1"
+  }
 }
