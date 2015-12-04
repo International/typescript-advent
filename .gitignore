@@ -1,3 +1,5 @@
 node_modules
 challenges/*.js
+challenges/*.map
 spec/*.js
+spec/*.map
