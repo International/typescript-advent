@@ -3,3 +3,4 @@ challenges/*.js
 challenges/*.map
 spec/*.js
 spec/*.map
+npm-debug.log

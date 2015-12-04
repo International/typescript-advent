@@ -1,11 +1,12 @@
 module.exports = function (grunt) {
+  grunt.loadNpmTasks('grunt-mocha-test');
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     ts: {
       build: {
-        src: ["challenges/*.ts", "!node_modules/**/*.ts"], 
+        src: ["challenges/*.ts", "spec/*.ts", "!node_modules/**/*.ts"], 
         // Avoid compiling TypeScript files in node_modules
         options: {
           module: 'commonjs', 
@@ -15,19 +16,22 @@ module.exports = function (grunt) {
         }
       }
     },
-    tslint: {
-      options: {
-        configuration: grunt.file.readJSON("tslint.json")
-      },
-      all: {
-        src: ["challenges/*.ts", "!node_modules/**/*.ts", "!obj/**/*.ts", "!typings/**/*.ts"] // avoid linting typings files and node_modules files
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          // captureFile: 'results.txt', // Optionally capture the reporter output to a file
+          quiet: false, // Optionally suppress output to standard out (defaults to false)
+          clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
+        },
+        src: ['spec/*.js']
       }
-    },
+    }
   });
 
   grunt.loadNpmTasks("grunt-ts");
-  grunt.loadNpmTasks("grunt-tslint");
 
   // Default tasks.
-  grunt.registerTask('default', ["tslint:all", "ts:build"]);
+  grunt.registerTask('default', ["ts:build"]);
+  grunt.registerTask('spec', ["ts:build", "mochaTest"]);
 };
