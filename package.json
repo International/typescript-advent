@@ -9,6 +9,9 @@
   },
   "author": "George Opritescu",
   "license": "ISC",
+  "dependencies": {
+    "typescript": "1.7.3"
+  },
   "devDependencies": {
     "should": "^7.1.1"
   }
